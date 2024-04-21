@@ -1,0 +1,21 @@
+staff_id,name,email,password,group
+1,John Doe,s1@bennett.edu.in,password123,1
+2,Jane Smith,s2@bennett.edu.in,securepass456,2
+3,Michael Johnson,s3@bennett.edu.in,letmein789,3
+4,Emily Brown,s4@bennett.edu.in,pass1234,1
+5,David Wilson,s5@bennett.edu.in,12345678,2
+6,Sarah Martinez,s6@bennett.edu.in,p@ssw0rd,3
+7,Christopher Taylor,s7@bennett.edu.in,password!@#,1
+8,Amanda Anderson,s8@bennett.edu.in,abc123def,2
+9,James Garcia,s9@bennett.edu.in,qwerty123,3
+10,Laura Hernandez,s10@bennett.edu.in,iloveyou456,1
+11,Matthew Walker,s11@bennett.edu.in,admin123,2
+12,Emma Perez,s12@bennett.edu.in,letmein!@#,3
+13,Brian Gonzalez,s13@bennett.edu.in,password1234,1
+14,Megan Scott,s14@bennett.edu.in,securepass!@#,2
+15,Justin Lee,s15@bennett.edu.in,123456789,3
+16,Ashley King,s16@bennett.edu.in,passw0rd123,1
+17,William Wright,s17@bennett.edu.in,abcdef123,2
+18,Jessica Green,s18@bennett.edu.in,!@#password,3
+19,Daniel Baker,s19@bennett.edu.in,letmein123,1
+20,Samantha Adams,s20@bennett.edu.in,password!@123,2

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar">
+        <!-- <a>Home</a>
+        <a>About</a>
+        <a">Contact</a> -->
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- <footer>
+        <p>&copy; 2024 - All rights reserved</p>
+    </footer> -->
+
+    <style>
+        /* body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav{
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            height: 8vh;
+        } */
+    </style>
+</body>
+</html>

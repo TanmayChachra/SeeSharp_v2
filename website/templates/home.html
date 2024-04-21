@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SeeSharp</title>
+    <style>
+      :root {
+        --dark_blue_bg: #0f172a;
+        --off_blue_bg: #1e293b;
+      }
+
+      ::-webkit-scrollbar {
+        width: 5px;
+        background-color: #0f172a;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-track {
+        display: none;
+      }
+
+      ::-webkit-scrollbar-corner {
+        display: none;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--dark_blue_bg);
+        font-family: Arial, Helvetica, sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        /* font-family: ; */
+      }
+
+      .logo {
+        align-items: center;
+        justify-content: center;
+        margin-left: 37.5%;
+        height: 25%;
+        width: 25%;
+        margin-bottom: -15%;
+        animation: slideIn 1s ease-in-out forwards;
+      }
+
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -100;
+        background-color: #1e293b;
+        opacity: 0.4;
+        background-image: radial-gradient(#cbd5e1 0.5px, #1e293b 0.5px);
+        background-size: 10px 10px;
+      }
+
+      .circle2 {
+        position: absolute;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -100;
+        background-color: #0f172a;
+        opacity: 1;
+        background-image: radial-gradient(#cbd5e1 0.5px, #0f172a 0.5px);
+        background-size: 10px 10px;
+      }
+
+      .c1 {
+        height: 500px;
+        width: 500px;
+        top: 30%;
+        left: 10%;
+      }
+
+      .c2 {
+        height: 200px;
+        width: 200px;
+        top: 30%;
+        right: 7%;
+      }
+
+      .c3 {
+        height: 100px;
+        width: 100px;
+        top: 80%;
+        right: 7%;
+      }
+
+      .c4 {
+        height: 300px;
+        width: 300px;
+        top: 90%;
+        left: 40%;
+      }
+
+      .c5 {
+        height: 100px;
+        width: 100px;
+        top: 200%;
+        left: 7%;
+        z-index: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 17.5px;
+      }
+
+      nav {
+        margin: -2px 5% -2px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2% 25% 0% 25%;
+      }
+
+      nav img {
+        margin-left: 3%;
+        margin-right: 10%;
+      }
+
+      .thin-line {
+        border: 0;
+        height: 1px;
+        background-color: #fff;
+        width: 60%;
+      }
+
+      .main-title {
+        text-align: center;
+        color: #cbd5e1;
+        font-size: 10rem;
+        margin-top: 5%;
+        margin-bottom: 0;
+        animation: slideIn 1s ease-in-out forwards;
+      }
+
+      .sub-title {
+        text-align: center;
+        color: #cbd5e1;
+        opacity: 0.6;
+        font-size: 2rem;
+        margin-top: -2%;
+        font-weight: 400;
+        animation: slideIn 1s ease-in-out forwards;
+      }
+
+      @keyframes slideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section1 {
+        margin: 0;
+        height: 100vh;
+        /* background-color: orange; */
+      }
+
+      .section2 {
+        margin: 0;
+        background-color: #1e293b;
+        /* background-color: blue; */
+        height: 60vh;
+        display: flex;
+      }
+
+      .section2-left {
+        width: 50%;
+        z-index: 2;
+      }
+
+      .section2-heading {
+        color: #cbd5e1;
+        text-align: left;
+        font-size: 45px;
+        margin-left: 10%;
+      }
+
+      .section2-text {
+        color: #cbd5e1;
+        opacity: 0.6;
+        text-align: left;
+        font-size: 1.2rem;
+        margin-left: 10%;
+        margin-top: 2%;
+        font-weight: 400;
+      }
+
+      .section2-right {
+        width: 50%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .face_scan_image {
+        width: 50%;
+        height: auto;
+        margin: 0 25%;
+      }
+
+      .section3 {
+        /* background-color: red; */
+        background-color: #1e293b;
+        height: 130vh;
+      }
+
+      .section3-heading {
+        color: #cbd5e1;
+        text-align: center;
+        font-size: 45px;
+        margin-top: -1%;
+        padding-top: 15%;
+      }
+
+      .benefits-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5%;
+        margin: 5% 20% 0 20%;
+      }
+
+      .benefit {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #cbd5e1;
+        border: 3px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 25px;
+      }
+
+      .benefit:hover {
+        box-shadow: 0px 0px 20px 10px #0f172a;
+      }
+
+      .benefit img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .benefit-text {
+        opacity: 0.6;
+      }
+
+      .section4 {
+        background-color: #1e293b;
+        height: 110vh;
+        margin-top: -2%;
+      }
+
+      .section4-flex {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .section4-left {
+        width: 40%;
+        background-color: #1e293b;
+      }
+
+      .section4-img {
+        width: 80%;
+        height: auto;
+        margin-top: 30%;
+        margin-left: 20%;
+      }
+
+      .section4-right {
+        width: 60%;
+        background-color: #1e293b;
+        color: #cbd5e1;
+        padding: 5% 10% 0 10%;
+        display: block;
+        text-align: right;
+      }
+
+      .section4-heading {
+        color: #cbd5e1;
+        font-size: 45px;
+      }
+
+      .section4-text {
+        opacity: 0.6;
+        font-size: 1.2rem;
+        margin-top: 0;
+        font-weight: 400;
+      }
+
+      .join-us {
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        height: 30px;
+        color: #cbd5e1;
+        font-size: 25px;
+        margin: 2% 0 0 60%;
+        line-height: 1.5px;
+        display: inline;
+      }
+
+      .join-us:hover {
+        cursor: pointer;
+        line-height: 1.5px;
+        display: inline;
+        background-image: linear-gradient(
+          transparent 50%,
+          #4aa181 50%,
+          #4aa181 85%,
+          transparent 85%,
+          transparent 100%
+        );
+        background-repeat: no-repeat;
+        background-size: 0% 100%;
+        animation: animatedBackground 1.5s cubic-bezier(0.645, 0.045, 0.355, 1)
+          0s forwards;
+      }
+
+      @keyframes animatedBackground {
+        to {
+          background-size: 100% 100%;
+        }
+      }
+
+      .section5 {
+        background-color: #1e293b;
+        height: 100vh;
+        margin-top: -2%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section5-heading {
+        color: #cbd5e1;
+        text-align: center;
+        font-size: 45px;
+      }
+
+      .grid {
+        margin-top: 5%;
+        margin-left: 15%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 60px;
+        padding: 60px;
+      }
+
+      .card {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        perspective: 1000px;
+        box-shadow: 0 0 0 5px #0f172a;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .card svg {
+        width: 48px;
+        fill: #0f172a;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+      }
+
+      .card__content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #0f172a;
+        transform: rotateX(-90deg);
+        transform-origin: bottom;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .card:hover .card__content {
+        transform: rotateX(0deg);
+      }
+
+      .card__title {
+        margin: 0;
+        font-size: 24px;
+        color: #cbd5e1;
+        font-weight: 700;
+      }
+
+      .card:hover svg {
+        scale: 0;
+      }
+
+      .card__description {
+        margin: 10px 0 0;
+        font-size: 16px;
+        color: #cbd5e1;
+        opacity: 0.6;
+        line-height: 1.4;
+      }
+
+      .footer-text{
+        color: #cbd5e1;
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 5%;
+        height: 5vh;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+    <div class="circle c4"></div>
+    <!-- <div class="circle2 c5"></div> -->
+    <header>
+      <nav>
+        <a href="#home"><p id="home">Home</p></a>
+        <a href="#about">About</a>
+        <a href="/test">Test our product</a>
+        {% if user.is_authenticated %} {% if "admin" in user.email %}
+        <a href="admin">Dashboard</a>
+        {% else %}
+        <a href="dashboard">Dashboard</a>
+        {% endif %}
+        <a href="/logout">Logout</a>
+        {% else %}
+        <a href="/login">Login</a>
+        {% endif %}
+      </nav>
+      <hr class="thin-line" />
+    </header>
+    <main>
+      <div class="logo">
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 1080 1080"
+        >
+          <defs>
+            <style>
+              .cls-3 {
+                stroke-width: 27.48px;
+              }
+
+              .cls-3,
+              .cls-5 {
+                fill: none;
+                stroke-miterlimit: 10;
+              }
+
+              .cls-3,
+              .cls-5 {
+                stroke: #cbd5e1;
+              }
+
+              .cls-5 {
+                stroke-width: 32.61px;
+              }
+
+              .cls-7 {
+                fill: #8556ed;
+              }
+
+              .cls-7 {
+                stroke-width: 0px;
+              }
+            </style>
+          </defs>
+          <g class="logo">
+            <!-- bounding circle -->
+            <path
+              class="cls-3"
+              d="M669.21,495.1c.39,1.11.75,2.22,1.11,3.34,22.5,70.43-15.16,146.36-85.42,170.77-70.25,24.41-146.89-11.79-172.91-81-.42-1.1-.82-2.2-1.2-3.31s-.76-2.24-1.11-3.34c-2.12-6.6-3.69-13.26-4.77-19.92-.17-1.11-.34-2.21-.48-3.33-.09-.62-.18-1.27-.24-1.91-.35-2.68-.59-5.37-.75-8.05-.06-1.1-.11-2.16-.15-3.25-.18-4.46-.13-8.9.14-13.29.04-.69.08-1.36.15-2.02.02-.59.08-1.2.14-1.81.08-.9.16-1.78.27-2.65.11-1.01.22-2.01.35-3.02,0-.13.03-.22.04-.33.14-1.04.29-2.09.46-3.12.13-.86.27-1.73.43-2.6.12-.63.22-1.25.35-1.86.18-1,.39-2,.61-3,.27-1.32.58-2.62.91-3.92.18-.77.37-1.55.58-2.31.36-1.37.74-2.73,1.14-4.07.19-.63.38-1.25.58-1.87.44-1.43.91-2.84,1.4-4.23.26-.78.55-1.58.85-2.36.29-.81.59-1.61.91-2.39.19-.53.39-1.06.62-1.58.27-.66.52-1.3.81-1.95.55-1.29,1.11-2.57,1.69-3.84.38-.84.77-1.65,1.18-2.49.47-.96.95-1.93,1.43-2.88l.05-.11c.5-.96,1-1.91,1.51-2.85.53-.97,1.06-1.91,1.61-2.87.54-.95,1.1-1.89,1.67-2.82.58-.95,1.14-1.87,1.75-2.79.36-.59.73-1.16,1.12-1.72.37-.57.75-1.15,1.15-1.71.46-.67.93-1.35,1.41-2.02.59-.85,1.22-1.7,1.84-2.52.07-.11.14-.21.23-.31.44-.58.88-1.16,1.32-1.72,1.57-2.04,3.2-4.02,4.89-5.96.52-.61,1.03-1.17,1.55-1.76.94-1.04,1.89-2.08,2.87-3.09.63-.64,1.26-1.29,1.88-1.93.16-.16.33-.33.49-.47.74-.74,1.47-1.45,2.23-2.16.5-.49,1.02-.96,1.53-1.44.44-.42.89-.82,1.34-1.21,2.34-2.11,4.75-4.12,7.25-6.05.88-.7,1.78-1.36,2.68-2.03.58-.43,1.17-.87,1.77-1.29.47-.34.95-.69,1.44-1.02.76-.53,1.53-1.06,2.31-1.57.94-.63,1.88-1.24,2.84-1.84.79-.49,1.56-.97,2.36-1.44,2.22-1.34,4.49-2.62,6.8-3.84,1.68-.89,3.39-1.73,5.12-2.54,1.36-.65,2.72-1.27,4.09-1.87,1.95-.84,3.94-1.65,5.96-2.41,1.22-.48,2.45-.92,3.7-1.36,71.37-24.8,149.31,12.94,174.12,84.31Z"
+            />
+            <!-- inner most circle , the eye -->
+            <path
+              class="cls-7"
+              d="M614.59,578.01c5.82-2.02,11.04-4.95,15.59-8.59-8.88,27.2-29.93,50.08-59.04,60.2-49.49,17.2-103.55-8.98-120.75-58.47-17.2-49.49,8.98-103.55,58.47-120.75,37.13-12.9,76.85-1.39,101.62,26.08-9.81-2.55-20.45-2.34-30.74,1.24-27.71,9.63-42.35,39.89-32.72,67.58,9.62,27.69,39.87,42.35,67.58,32.72Z"
+            />
+            <!-- top arc -->
+            <path
+              class="cls-5"
+              d="M348.42,512.77c9.91-69.44,57.33-131.04,128.15-155.65,23.05-8.01,46.58-11.41,69.6-10.68"
+            />
+            <!-- bottom arc -->
+            <path
+              class="cls-5"
+              d="M732.74,559.53c-7.41,72.52-55.68,137.77-129.09,163.28-66.38,23.07-136.79,7.89-187.21-33.9"
+            />
+          </g>
+        </svg>
+      </div>
+      <div class="section1">
+        <h1 class="main-title">SEESHARP</h1>
+        <h2 class="sub-title">Automate Attendance with Visionary Precision</h2>
+        <svg
+          width="100%"
+          height="100%"
+          id="svg"
+          viewBox="0 0 1440 590"
+          xmlns="http://www.w3.org/2000/svg"
+          class="transition duration-300 ease-in-out delay-150"
+        >
+          <path
+            d="M 0,600 L 0,225 C 110.10714285714286,240.21428571428572 220.21428571428572,255.42857142857142 329,247 C 437.7857142857143,238.57142857142858 545.25,206.50000000000003 670,221 C 794.75,235.49999999999997 936.7857142857144,296.57142857142856 1068,305 C 1199.2142857142856,313.42857142857144 1319.6071428571427,269.2142857142857 1440,225 L 1440,600 L 0,600 Z"
+            stroke="none"
+            stroke-width="0"
+            fill="#1e293b"
+            fill-opacity="1"
+            class="transition-all duration-300 ease-in-out delay-150 path-0"
+          ></path>
+        </svg>
+      </div>
+      <div class="section2">
+        <div class="section2-left">
+          <h1 class="section2-heading">
+            Empower Your Workplace <br />with Cutting-Edge Technology
+          </h1>
+          <p class="section2-text">
+            Are you tired of outdated attendance tracking methods? Say goodbye
+            to manual timesheets and embrace the future of attendance management
+            with SeeSharp's Facial Recognition Attendance System.
+            <br /><br />With SeeSharp, you can streamline your attendance
+            tracking process, increase accuracy, and enhance security in your
+            institution. Our advanced facial recognition technology ensures
+            efficient and reliable attendance monitoring, saving you time and
+            resources.
+          </p>
+        </div>
+        <div class="section2-right">
+          <img
+            src="static/face_scan.png"
+            alt="face_scan"
+            class="face_scan_image"
+          />
+        </div>
+      </div>
+      <div class="section3">
+        <h1 class="section3-heading">Discover the Benefits of SeeSharp</h1>
+        <div class="benefits-section">
+          <div class="benefit">
+            <img src="static/section3_1.png" alt="secure" />
+            <h2>Effortless Attendance Tracking</h2>
+            <p class="benefit-text">
+              Say goodbye to traditional time clocks and paper-based systems.
+              SeeSharp automates the entire attendance tracking process, making
+              it quick and hassle-free.
+            </p>
+          </div>
+          <div class="benefit">
+            <img src="static/section3_2.png" alt="secure" />
+            <h2>Precision and Accuracy</h2>
+            <p class="benefit-text">
+              Our facial recognition technology accurately identifies employees,
+              eliminating the risk of buddy punching and time theft.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section4" id="about">
+        <div class="section4-flex">
+          <div class="section4-left">
+            <img src="static/about.png" class="section4-img" />
+          </div>
+          <div class="section4-right">
+            <h1 class="section4-heading">About SeeSharp</h1>
+            <p class="section4-text">
+              At SeeSharp, we're passionate about leveraging technology to
+              simplify complex business challenges. With a focus on innovation
+              and excellence, we strive to deliver cutting-edge solutions that
+              empower organizations to thrive in the digital age.
+            </p>
+            <br />
+            <p class="section4-text">
+              SeeSharp is committed to revolutionizing attendance management
+              with our Facial Recognition Attendance System. We believe in the
+              power of technology to drive efficiency, improve accuracy, and
+              enhance security in the workplace.
+            </p>
+            <br />
+            <p class="section4-text">
+              Our mission is simple: to provide businesses with a reliable and
+              user-friendly solution for attendance tracking, enabling them to
+              focus on what matters most - their success.
+            </p>
+            <br />
+            <p class="section4-text">
+              Join us on this journey towards a smarter, more efficient future.
+            </p>
+          </div>
+        </div>
+        <p class="join-us">Experience the SeeSharp difference today!</p>
+      </div>
+      <div class="section5">
+        <h1 class="section5-heading">Meet The Team</h1>
+        <div class="grid">
+          <div class="card vishesh">
+            <img src="static/aarushi.jpeg" width="100%" height="auto" />
+            <div class="card__content">
+              <p class="card__title">Aarushi Singh</p>
+              <p class="card__description">
+                I have worked on researching and implementing the concerned
+                Facial Detection and Recognition algorithm, as well as picking
+                and understanding the appropriate data needed for the same.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="static/tanmay.jpeg" width="100%" height="auto" />
+            <div class="card__content">
+              <p class="card__title">Tanmay Chachra</p>
+              <p class="card__description">
+                The code-wizard that gave life to our project. I meticulously
+                designed and developed the website, integrating it with our
+                database and finally with our secret sauce, the Facial
+                Recognition model.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p class="footer-text">&copy; 2024 SeeSharp. All rights reserved.</p>
+    </footer>
+  </body>
+
+  <script>
+    function navigateToLogin() {
+      window.location.href = "/login";
+    }
+    function Logout() {
+      window.location.href = "/logout";
+    }
+  </script>
+</html>

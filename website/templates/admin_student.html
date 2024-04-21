@@ -1,0 +1,231 @@
+{% extends 'admin.html' %} {% block staff_section %}
+
+<div class="right_container_head">
+  <h1>DASHBOARD </h1>
+  <h2 class="sub-heading">| Students</h2>
+  <div class="searchbar_container">
+    <form class="search-form" method="POST">
+      <button>
+        <svg
+          width="17"
+          height="16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-labelledby="search"
+        >
+          <path
+            d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+            stroke="currentColor"
+            stroke-width="1.333"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </button>
+      <input
+        class="input"
+        placeholder="Search by name"
+        required=""
+        type="text"
+        name="query"
+        id="query"
+      />
+      <button class="reset" type="reset">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </form>
+  </div>
+  <button type="submit" class="sign">Add New Student</button>
+  </div>
+
+<div class="grid-container">
+  {% if students %} {% for student in students %}
+  <div class="card">
+    <h2>{{ student.name }}</h2>
+    <p>ID: {{ student.student_id }} | Group:{{student.group}}</p>
+  </div>
+  {% endfor %} {% else %}
+  <h2>No Student Found</h2>
+  {% endif %}
+</div>
+
+<style>
+  .sub-heading {
+    color: var(--text_color);
+    text-align: left;
+    margin-left: 1%;
+    font-size: 45px;
+    font-weight: 600;
+  }
+
+  .sign {
+    position: absolute;
+    right: 110px;
+    width: 150px;
+    background-color: #326d58;
+    padding: 0.75rem;
+    color: rgba(17, 24, 39, 1);
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .sign:hover {
+    background-color: #4aa181;
+  }
+
+  .searchbar_container {
+    position: absolute;
+    margin-top: 35px;
+    right: 300px;
+    padding: 2rem;
+    height: 10vh;
+  }
+  /* removing default style of button */
+  .search-form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+  }
+  /* styling of whole input container */
+  .search-form {
+    --timing: 0.3s;
+    --width-of-input: 200px;
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: #0f172a;
+    --border-color: #2f2ee9;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg, #fff);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  /* styling of Input */
+  .input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    color: #cbd5e1;
+  }
+  /* styling of animated border */
+  .search-form:before {
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+  }
+  /* Hover on Input */
+  .search-form:focus-within {
+    border-radius: var(--after-border-radius);
+  }
+
+  input:focus {
+    outline: none;
+  }
+  /* here is code of animated border */
+  .search-form:focus-within:before {
+    transform: scale(1);
+  }
+  /* styling of close button */
+  /* == you can click the close button to remove text == */
+  .reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+  /* close button shown when typing */
+  input:not(:placeholder-shown) ~ .reset {
+    opacity: 1;
+    visibility: visible;
+  }
+  /* sizing svg icons */
+  .search-form svg {
+    width: 17px;
+    margin-top: 3px;
+  }
+
+  /* GRID CONTAINER STARTS HERE  */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(250px, 1fr)
+    ); 
+    gap: 50px; 
+    padding: 50px 100px 100px 100px;
+    overflow-y: scroll;
+    height: 60vh;
+  }
+  .grid-container::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .card {
+    background-color: #0f172a;
+    display: relative;
+    padding: 20px;
+    border-radius: 5px;
+    /* box-shadow: 2px 2px 2px 2px #8138ff33; */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    height: 60px;
+  }
+  .card h2 {
+    color: #cbd5e1;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .card p {
+    color: #cbd5e172;
+  }
+
+  .card img {
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: auto;
+  }
+
+  .card img:hover {
+    cursor: pointer;
+  }
+
+</style>
+{% endblock %}

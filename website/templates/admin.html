@@ -1,0 +1,54 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Admin{% endblock %}
+
+
+{% block nav_buttons %}
+<button class="nav_btn" id="staff_btn" onclick="toStaffSection()"><span>Staff</span></button>
+<button class="nav_btn" id="student_btn" onclick="toStudentSection()"><span>Students</span></button>
+<button class="nav_btn" id="class_btn" onclick="toClassesSection()"><span>Classes</span></button>
+
+{% endblock %}
+
+{% block right_container %}
+<div class="dashboard_container">
+    {% block staff_section %}{% endblock %}
+    {% block student_section %}{% endblock %}
+    {% block classes_section %}{% endblock %}
+</div>
+<style>
+
+
+.dashboard_container{
+    display: absolute;
+    margin:0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+</style>
+
+<script>
+    
+    function toStaffSection(){
+        window.location.href = "/admin/staff";
+    }
+
+    function toStudentSection(){
+        window.location.href = "/admin/student";
+    }
+
+    function toClassesSection(){
+        window.location.href = "/admin/classes";
+    }
+    
+    function toLogout(){
+        window.location.href = "/Logout";
+    }
+
+
+
+</script>
+{% endblock %}
+
