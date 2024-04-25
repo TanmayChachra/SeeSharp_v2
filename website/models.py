@@ -7,7 +7,7 @@ class Staff(db.Model,UserMixin):
     name = db.Column(db.String(150))
     email = db.Column(db.String(150),unique=True)
     password = db.Column(db.String(150))
-    classes = db.relationship('Classes')
+    group = db.Column(db.Integer)
     def get_id(self):
         return str(self.staff_id)
 
@@ -20,10 +20,11 @@ class Students(db.Model):
 
 class Classes(db.Model):
     class_id = db.Column(db.Integer,primary_key=True)
-    time = db.Column(db.DateTime)
+    start_time = db.Column(db.DateTime)
+    end_time = db.Column(db.DateTime)
     staff_id = db.Column(db.Integer,db.ForeignKey('staff.staff_id'))
-    student_id = db.Column(db.Integer,db.ForeignKey('students.student_id'))
-    attendance = db.Column(db.Integer) #0 for absent, 1 for present
+    group = db.Column(db.Integer)
+    attendance = db.Column(db.String(150)) #0 for absent, 1 for present
     def get_id(self):
         return str(self.class_id)
 

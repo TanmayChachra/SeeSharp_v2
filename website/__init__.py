@@ -4,10 +4,12 @@ from os import path
 from flask_login import LoginManager
 import os
 import shutil
+import cv2
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
 UPLOAD_FOLDER = "website\\static\\test_images"
+camera = cv2.VideoCapture(0)
 
 def create_app():
     app = Flask(__name__)
@@ -50,6 +52,7 @@ def create_app():
             # Check if the user's email starts with 'user_'
             staff_user = Staff.query.filter_by(staff_id=user_id).filter(Staff.email.startswith('s')).first()
             return staff_user
+        
     return app
 
 def remove_contents(directory):

@@ -49,14 +49,14 @@
     </button>
   </form>
 </div>
-<button type="submit" class="sign">Add New Staff</button>
+<button type="submit" class="sign" onclick="toAddNewStaff()">Add New Staff</button>
 </div>
 
 <div class="grid-container">
   {% if staffs %} {% for staff in staffs %}
   <div class="card">
     <h2>{{ staff.name }}</h2>
-    <p>ID: {{ staff.staff_id }} | Group:{% for i in staff.classes %} {{i}} {% endfor %}</p>
+    <p>ID: {{ staff.staff_id }} | Group: {{staff.group}} </p>
   </div>
   {% endfor %} {% else %}
   <h2>No Staff Found</h2>
@@ -230,4 +230,11 @@
 
 
 </style>
+
+<script>
+  function toAddNewStaff() {
+    window.location.href = "/admin/staff/add_new";
+  }
+</script>
+
 {% endblock %}

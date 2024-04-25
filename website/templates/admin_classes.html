@@ -25,7 +25,7 @@
       </button>
       <input
         class="input"
-        placeholder="Search by name"
+        placeholder="Search by ID"
         required=""
         type="text"
         name="query"
@@ -49,94 +49,18 @@
       </button>
     </form>
   </div>
-  <button type="submit" class="sign">Add New Class</button>
+  <button type="submit" class="sign" onclick="toAddNewClass()">Add New Class</button>
 </div>
 
 <div class="grid-container">
+  {% for class in classes %}
   <div class="card">
-    <h2>CLASS1</h2>
-    <p>Faculty: John Doe</p>
-    <p>Group: G1</p>
-    <p>Time: 9:30am to 10:30am</p>
+    <h2>Class{{class.class_id}}</h2>
+    <p>Faculty: {{ class.staff_name}}</p>
+    <p>Group: G{{ class.group }}</p>
+    <p>Time: {{ class.start_time }} to {{ class.end_time }}</p>
   </div>
-  <div class="card">
-    <h2>CLASS2</h2>
-    <p>Faculty: David Wilson</p>
-    <p>Group: G2</p>
-    <p>Time: 9:30am to 10:30am</p>
-  </div>
-  <div class="card">
-    <h2>CLASS3</h2>
-    <p>Faculty: Amanda Andersone</p>
-    <p>Group: G1</p>
-    <p>Time: 10:30am to 11:30am</p>
-  </div>
-  <div class="card">
-    <h2>CLASS4</h2>
-    <p>Faculty: James Garcia</p>
-    <p>Group: G3</p>
-    <p>Time: 9:30am to 10:30am</p>
-  </div>
-  <div class="card">
-    <h2>CLASS5</h2>
-    <p>Faculty: Ashley King</p>
-    <p>Group: G2</p>
-    <p>Time: 10:30am to 11:30am</p>
-  </div>
-  <div class="card">
-    <h2>CLASS6</h2>
-    <p>Faculty: John Doe</p>
-    <p>Group: G3</p>
-    <p>Time: 10:30am to 11:30am</p>
-  </div>
-  <div class="card">
-    <h2>CLASS7</h2>
-    <p>Faculty: James Garcia</p>
-    <p>Group: G3</p>
-    <p>Time: 11:30am to 12:30pm</p>
-  </div>
-  <div class="card">
-    <h2>CLASS8</h2>
-    <p>Faculty: John Doe</p>
-    <p>Group: G1</p>
-    <p>Time: 11:30am to 12:30pm</p>
-  </div>
-  <div class="card">
-    <h2>CLASS9</h2>
-    <p>Faculty: Megan Scott</p>
-    <p>Group: G1</p>
-    <p>Time: 12:30pm to 1:30pm</p>
-  </div>
-  <div class="card">
-    <h2>CLASS10</h2>
-    <p>Faculty: Ashley King</p>
-    <p>Group: G1</p>
-    <p>Time: 1:30pm to 2:30pm</p>
-  </div>
-  <div class="card">
-    <h2>CLASS11</h2>
-    <p>Faculty: Megan Scott</p>
-    <p>Group: G2</p>
-    <p>Time: 11:30am to 12:30pm</p>
-  </div>
-  <div class="card">
-    <h2>CLASS12</h2>
-    <p>Faculty: John Doe</p>
-    <p>Group: G1</p>
-    <p>Time: 2:30pm to 3:30pm</p>
-  </div>
-  <div class="card">
-    <h2>CLASS13</h2>
-    <p>Faculty: Ashley King</p>
-    <p>Group: G2</p>
-    <p>Time: 12:30pm to 1:30pm</p>
-  </div>
-  <div class="card">
-    <h2>CLASS14</h2>
-    <p>Faculty: Megan Scott</p>
-    <p>Group: G2</p>
-    <p>Time: 1:30pm to 2:30pm</p>
-  </div>
+  {% endfor %}
 </div>
 
 <style>
@@ -259,7 +183,7 @@
   /* GRID CONTAINER STARTS HERE  */
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 50px;
     padding: 100px;
     overflow-y: scroll;
@@ -301,4 +225,9 @@
     cursor: pointer;
   }
 </style>
+<script>
+  function toAddNewClass() {
+    window.location.href = "/admin/classes/add_new";
+  }
+</script>
 {% endblock %}

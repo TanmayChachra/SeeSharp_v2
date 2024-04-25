@@ -82,7 +82,9 @@
       <input type="file" name="imageFiles" accept="image/*" multiple />
       <button type="submit" class="submit_btn">Upload</button>
     </form>
+    {% if records %}
     <h2>Attendance:</h2>
+    {% endif %}
     <div class="list">
       {%for list in records%} {% for names in list %}
       <p class="description">{{names.replace("_", " ").split('.')[0]}}</p>
@@ -237,12 +239,15 @@
   }
 
   .list {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    margin-left: 1.25rem;
-    margin-right: 3rem;
-    overflow-x: scroll;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(250px, 1fr)
+    ); 
+    gap: 50px; 
+    padding: 50px 100px 100px 100px;
+    overflow-y: scroll;
+    height: 20vh;
   }
 
   .list::-webkit-scrollbar {

@@ -2,13 +2,13 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block nav_buttons %}
-<button class="nav_btn" id="class_btn" ><span>Classes</span></button>
+<button class="nav_btn" id="class_btn" onclick="toDashboard()" ><span>Classes</span></button>
 {% endblock %}
 
 {% block right_container %}
 <div class="right_container_head">
     <h1>DASHBOARD </h1>
-    <h2 class="sub-heading">| Classes</h2>
+    <h2 class="sub-heading">| Upcoming Classes</h2>
     <div class="searchbar_container">
       <form class="search-form" method="POST">
         <button>
@@ -31,7 +31,7 @@
         </button>
         <input
           class="input"
-          placeholder="Search by name"
+          placeholder="Search by class id"
           required=""
           type="text"
           name="query"
@@ -59,32 +59,14 @@
     </div>
   
   <div class="grid-container">
-    {% if user.name == "John Doe" %}
-    <h2 class="date">21 April, 2024</h2>
-    <div class="card">
-      <h2>Class1</h2>
-      <p>Group: G1</p>
-      <p>Time: 9:30am to 10:30am</p>
+    <!-- <h2 class="date">{{today_date}}</h2> -->
+    {% for class in staff_classes %}
+    <div class="card" onclick= "toAttendance({{ class.class_id }}, {{ class.group }})" > 
+      <h2>Class{{class.class_id}}</h2>
+      <p>Group: G{{class.group}}</p>
+      <p>Time: {{class.start_time}} to {{class.end_time}}</p>
     </div>
-    <div class="card">
-      <h2>Class6</h2>
-      <p>Group: G3</p>
-      <p>Time: 10:30am to 11:30am</p>
-    </div>
-    <div class="card">
-      <h2>Class8</h2>
-      <p>Group: G1</p>
-      <p>Time: 11:30am to 12:30pm</p>
-    </div>
-    <div class="card">
-      <h2>Class12</h2>
-      <p>Group: G1</p>
-      <p>Time: 2:30pm to 3:30am</p>
-    </div>
-    {% else %}
-    <h2 class="date">No Classes Found</h2>
-    {% endif %}
-  </div>
+    {% endfor %}
   
   <style>
     .sub-heading {
@@ -261,5 +243,13 @@
     }
   
   </style>
+  <script>
+    function toAttendance(classId,group) {
+      window.location.href = "/dashboard/attendance/" + classId + "/" + group;
+    }
+    function toDashboard() {
+      window.location.href = "/dashboard";
+    }
+  </script>
 {% endblock %}
 

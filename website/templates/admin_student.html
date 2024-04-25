@@ -49,7 +49,7 @@
       </button>
     </form>
   </div>
-  <button type="submit" class="sign">Add New Student</button>
+  <button type="submit" class="sign" onclick="toAddNewStudent()">Add New Student</button>
   </div>
 
 <div class="grid-container">
@@ -228,4 +228,11 @@
   }
 
 </style>
+
+<script>
+  function toAddNewStudent() {
+    window.location.href = "/admin/student/add_new";
+  }
+</script>
+
 {% endblock %}

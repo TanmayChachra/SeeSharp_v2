@@ -1,0 +1,40 @@
+{% extends 'admin.html' %} {% block staff_section %}
+
+<div class="right_container_head">
+  <h1>DASHBOARD </h1>
+  <h2 class="sub-heading">| Staff</h2>
+</div>
+
+<div class="form-container">
+    <form action="/admin/staff/add_new" method="POST">
+        <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+        <label for="group">Group</label>
+        <input type="text" id="group" name="group" required>
+        </div>
+        <button type="submit" class="sign">Add Staff</button>
+    </form>
+</div>
+
+<style>
+  .sub-heading {
+    color: var(--text_color);
+    text-align: left;
+    margin-left: 1%;
+    font-size: 45px;
+    font-weight: 600;
+  }
+</style>
+
+{% endblock %}

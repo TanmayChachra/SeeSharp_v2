@@ -2,11 +2,13 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import Staff,Students,Classes,Admin
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
+from datetime import datetime
 
 auth = Blueprint('auth', __name__)
 
 @auth.route('login',methods=['GET','POST'])
 def login():
+    error = 0
     if request.method == "POST":
         email = request.form.get("username")
         password = request.form.get("password")
@@ -28,7 +30,7 @@ def login():
             error = 1
 
         
-    return render_template("login.html",error=0)
+    return render_template("login.html",error=error)
 # error: 0 for no error, 1 for email does not exit , 2 for username and password does not match
 
 @auth.route('admin',methods=['GET','POST'])
@@ -58,8 +60,31 @@ def adminStudent():
 @auth.route('admin/classes',methods=['GET','POST'])
 @login_required
 def adminClasses():
-    staffs = Classes.query.all()
-    return render_template("admin_classes.html",staffs=staffs,user=current_user)
+    all_classes =  Classes.query.all()
+    class_info_list = []
+    for i in all_classes:
+        staff = Staff.query.filter_by(staff_id=i.staff_id).first()
+        print(staff)
+        if staff:
+            staff_name = staff.name
+            print(staff_name)
+        else:
+            staff_name = "No Teacher Assigned"
+        
+        class_info = {
+            'class_id': i.class_id,
+            'start_time': i.start_time.strftime('%H:%M'),
+            'end_time': i.end_time.strftime('%H:%M'),
+            'staff_name': staff_name,
+            'group': i.group,
+        } 
+
+        class_info_list.append(class_info)
+        
+    if request.method == 'POST':
+        query = request.form['query']
+        class_info_list = Classes.query.filter(Classes.class_id.contains(query)).all()
+    return render_template("admin_classes.html",classes=class_info_list,user=current_user)
 
 @auth.route('logout')
 @login_required
